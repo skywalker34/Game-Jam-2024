@@ -5,18 +5,21 @@ public class PlayerControl : MonoBehaviour
     public CharacterController controller;
     public Rigidbody playerRigidbody;
     public Transform mainCamera;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
     //public Animator animator;
 
     public float speed = 10f;
     public float turnSmoothTime = 0.1f;
+    public float rotationSpeed = 5.0f;
     float turnSmoothVelocity;
     bool isDead = false;
 
 
-
-
+    public Camera playerCamera;
+    void Start()
+    {
+       playerRigidbody = GetComponent<Rigidbody>();
+       playerCamera = FindAnyObjectByType<Camera>();
+    }
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -28,11 +31,18 @@ public class PlayerControl : MonoBehaviour
         // Move the character
         GetComponent<CharacterController>().Move(movement * speed * Time.deltaTime);
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCamera.eulerAngles.y;
-        //    transform.rotation = Quaternion.Euler(0, targetAngle, 0);
-        //}
+        //Face The Mouse
+
+         Ray cameraRay = playerCamera.ScreenPointToRay(Input.mousePosition);
+         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+         float rayLength;
+         if (groundPlane.Raycast(cameraRay, out rayLength))
+         {
+             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+             Debug.DrawLine(cameraRay.origin, pointToLook, Color.yellow);
+        
+             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+         }
 
         //animator.SetFloat("Speed", direction.magnitude);
     }
