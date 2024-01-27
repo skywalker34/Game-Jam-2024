@@ -11,14 +11,13 @@ public class Shooting : MonoBehaviour
 
     private bool canShoot = false;
 
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
-            
             animator.SetBool("isShooting", true);
-            Invoke("EnableShooting", 3f); // Enable shooting after 4 seconds
+            Invoke("EnableShooting", 3f); // Enable shooting after 4 
         }
 
         if (canShoot)
