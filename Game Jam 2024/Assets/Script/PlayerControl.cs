@@ -6,6 +6,9 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody playerRigidbody;
     public Transform mainCamera;
     public Animator animator;
+    public GameObject player;
+    public GameObject banana;
+    public Shooting shootingControl;
 
     public float speed = 10f;
     public float rotationSpeed = 5.0f;
@@ -21,6 +24,9 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
+        bool isBanana = shootingControl.isBanana;
+        player.SetActive(!isBanana);
+        banana.SetActive(isBanana);
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
