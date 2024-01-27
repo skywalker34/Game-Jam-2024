@@ -14,6 +14,8 @@ public class PlayerControl : MonoBehaviour
     public float rotationSpeed = 5.0f;
     bool isDead = false;
 
+    public bool canMove = true;
+
 
     public Camera playerCamera;
     void Start()
@@ -33,10 +35,19 @@ public class PlayerControl : MonoBehaviour
         Vector3 movement = new Vector3(horizontal, 0f, vertical).normalized;
 
         // Move the character
-        GetComponent<CharacterController>().Move(movement * speed * Time.deltaTime);
+        if (canMove)
+        {
 
-        //Face The Mouse
-        Ray cameraRay = playerCamera.ScreenPointToRay(Input.mousePosition);
+            GetComponent<CharacterController>().Move(movement * speed * Time.deltaTime);
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            SetCanMove();
+        }
+
+
+            //Face The Mouse
+            Ray cameraRay = playerCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
         if (groundPlane.Raycast(cameraRay, out rayLength))
@@ -55,6 +66,21 @@ public class PlayerControl : MonoBehaviour
         {
             //animator.SetBool("isDead", true);
             isDead = true;
+        }
+    }
+
+
+
+    public void SetCanMove()
+    {
+        print("hi");
+        if (canMove)
+        {
+            canMove = false;
+        }
+        else if (!canMove)
+        {
+            canMove = true;
         }
     }
 }
