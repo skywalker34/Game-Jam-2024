@@ -6,6 +6,8 @@ public class Shooting : MonoBehaviour
     public Transform playerTransform;
     public Transform shootingPoint;
     public GameObject chickenPrefab;
+    public GameObject bananaPeelPrefab;
+    public bool isBanana = false;
 
     private float lastShotTime;
 
@@ -17,9 +19,18 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            int randomNumberInt = UnityEngine.Random.Range(0, 101);
+            isBanana = randomNumberInt > 30 ? true : false;
             animator.SetBool("isShooting", true);
             lastShotTime = Time.time;
-            InvokeRepeating("Shoot", 0.0f, 0.2f);
+            if (isBanana)
+            {
+                Shoot();
+            }
+            else
+            {
+                InvokeRepeating("Shoot", 0.2f, 0.2f);
+            }
         }
 
         if (Time.time - lastShotTime >= 1.0f)
@@ -31,9 +42,16 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject chicken = Instantiate(chickenPrefab, shootingPoint.position, transform.rotation);
-        ChickenMovement chickenControl = chicken.GetComponent<ChickenMovement>();
-        chickenControl.player = playerTransform.position;
-        chickenControl.shootingPoint = shootingPoint.position;
+        if (isBanana)
+        {
+            GameObject bananaPeel = Instantiate(bananaPeelPrefab, shootingPoint.position, transform.rotation);
+        }
+        else
+        {
+            GameObject chicken = Instantiate(chickenPrefab, shootingPoint.position, transform.rotation);
+            ChickenMovement chickenControl = chicken.GetComponent<ChickenMovement>();
+            chickenControl.player = playerTransform.position;
+            chickenControl.shootingPoint = shootingPoint.position;
+        }
     }
 }
