@@ -907,6 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1453039e3ba84448afce82643a7fb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 15220832}
   playerTransform: {fileID: 15220831}
   shootingPoint: {fileID: 2038786988}
   chickenPrefab: {fileID: 2061382871048491710, guid: 28093b67781a4504d8bc0a4d79113c55, type: 3}
@@ -967,7 +968,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1567818261435876064, guid: 5192bbeedc1246146a94efdbe694caa0, type: 3}
+  - {fileID: 2100000, guid: fa3bead21eb31624b977f0a53a13923b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1762,7 +1763,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d5defdb180ea80642b5b03e16df4f86c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1902,7 +1903,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a117ebd585dd31e4592c66b1ffb63e14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
