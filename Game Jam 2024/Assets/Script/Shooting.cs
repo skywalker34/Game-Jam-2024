@@ -41,7 +41,7 @@ public class Shooting : MonoBehaviour
         if (isBanana)
         {
             GameObject bananaPeel = Instantiate(bananaPeelPrefab, shootingPoint.position, transform.rotation);
-            Destroy(bananaPeel, 5.0f);
+            Destroy(bananaPeel, 5.0f); // Destroys bananaPeel after 5 seconds
         }
         else
         {
@@ -49,7 +49,7 @@ public class Shooting : MonoBehaviour
             ChickenMovement chickenControl = chicken.GetComponent<ChickenMovement>();
             chickenControl.player = playerTransform.position;
             chickenControl.shootingPoint = shootingPoint.position;
-            Destroy(chicken, 5.0f);
+            Destroy(chicken, 5.0f); // Destroys chicken after 5 seconds
         }
     }
 }
