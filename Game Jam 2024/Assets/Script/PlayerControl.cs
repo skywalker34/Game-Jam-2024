@@ -16,7 +16,6 @@ public class PlayerControl : MonoBehaviour
 
     public bool canMove = true;
 
-
     public Camera playerCamera;
     void Start()
     {
@@ -40,9 +39,11 @@ public class PlayerControl : MonoBehaviour
 
             GetComponent<CharacterController>().Move(movement * speed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetMouseButtonDown(0))
         {
-            SetCanMove();
+            SetCanMoveFalse(); // Stops player from moving during casting animation
+            Invoke("SetCanMoveTrue", 3.0f); // After 3 seconds (duration of the animation) player can move again
+
         }
 
 
@@ -71,14 +72,16 @@ public class PlayerControl : MonoBehaviour
 
 
 
-    public void SetCanMove()
+    public void SetCanMoveFalse() // Stops playing from moving during casting animation
     {
-        print("hi");
         if (canMove)
         {
             canMove = false;
         }
-        else if (!canMove)
+    }
+    public void SetCanMoveTrue() // Player can move again after animation is done
+    {
+        if (!canMove)
         {
             canMove = true;
         }

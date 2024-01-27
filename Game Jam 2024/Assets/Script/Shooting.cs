@@ -3,7 +3,6 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     public Animator animator;
-    //public PlayerControl stopMoving;
     public Transform playerTransform;
     public Transform shootingPoint;
     public GameObject chickenPrefab;
@@ -19,7 +18,6 @@ public class Shooting : MonoBehaviour
         {
             animator.SetBool("isShooting", true);
             Invoke("EnableShooting", 3f); // Enable shooting after 4 
-            //stopMoving.SetCanMove(canShoot);
         }
 
         if (canShoot)
@@ -28,7 +26,6 @@ public class Shooting : MonoBehaviour
             isBanana = randomNumberInt > 30 ? true : false;
             Shoot();
             canShoot = false; // Reset the flag
-            //stopMoving.SetCanMove(canShoot);
             animator.SetBool("isShooting", false);
         }
     }
