@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    //public Animator animator;
+    public Animator animator;
     public Transform playerTransform;
     public Transform shootingPoint;
-    public GameObject bulletPrefab;
+    public GameObject chickenPrefab;
 
     private float lastShotTime;
 
@@ -17,19 +17,23 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //animator.SetBool("isShooting", true);
+            animator.SetBool("isShooting", true);
             lastShotTime = Time.time;
-            Shoot();
+            InvokeRepeating("Shoot", 0.0f, 0.2f);
         }
 
-        //if (Time.time - lastShotTime > 1)
-        //{
-        //    animator.SetBool("isShooting", false);
-        //}
+        if (Time.time - lastShotTime >= 1.0f)
+        {
+            animator.SetBool("isShooting", false);
+            CancelInvoke("Shoot");
+        }
     }
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
+        GameObject chicken = Instantiate(chickenPrefab, shootingPoint.position, transform.rotation);
+        ChickenMovement chickenControl = chicken.GetComponent<ChickenMovement>();
+        chickenControl.player = playerTransform.position;
+        chickenControl.shootingPoint = shootingPoint.position;
     }
 }

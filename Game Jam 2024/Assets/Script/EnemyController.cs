@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,11 +5,11 @@ public class EnemyController : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform target;  // Player's transform
-    private NavMeshAgent navMeshAgent;
+    public NavMeshAgent navMeshAgent;
 
     void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        //navMeshAgent = GetComponent<NavMeshAgent>();
 
         if (target == null)
         {
