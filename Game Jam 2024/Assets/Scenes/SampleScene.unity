@@ -250,7 +250,7 @@ Transform:
   m_GameObject: {fileID: 15220826}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.3, y: 0, z: -45.5}
+  m_LocalPosition: {x: -35, y: 0, z: -45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1296,37 +1296,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df8a2dc19c08aff408ec0d7867ff4145, type: 3}
---- !u!1 &830156154
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 830156155}
-  m_Layer: 0
-  m_Name: MeteorSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &830156155
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830156154}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 30, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855375131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,7 +1458,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.26336795, y: -0, z: -0, w: 0.9646955}
-  m_LocalPosition: {x: 0.4, y: 26.87, z: -35.65}
+  m_LocalPosition: {x: -35, y: 18, z: -69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1508,7 +1477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followPlayer: {fileID: 15220831}
-  playerOffset: {x: 0.4, y: 20, z: -24}
+  playerOffset: {x: 0.4, y: 18, z: -24}
   moveSpeed: 10
 --- !u!1001 &1041169052
 PrefabInstance:
@@ -3059,7 +3028,6 @@ MonoBehaviour:
   animator: {fileID: 15220832}
   playerTransform: {fileID: 15220831}
   shootingPoint: {fileID: 2038786988}
-  meteorSpawn: {fileID: 830156155}
   chickenPrefab: {fileID: 2061382871048491710, guid: 28093b67781a4504d8bc0a4d79113c55, type: 3}
   bananaPeelPrefab: {fileID: 6614009397096250188, guid: f0afcce59566f474fb02dcf1e83bc653, type: 3}
   firePrefab: {fileID: 1279673718569943057, guid: 5df1aefaa54996144bfe0131f969848b, type: 3}
@@ -5902,16 +5870,15 @@ SceneRoots:
   - {fileID: 150187113}
   - {fileID: 1087276120}
   - {fileID: 671707862}
-  - {fileID: 830156155}
   - {fileID: 3381730726626311501}
   - {fileID: 1437785035}
   - {fileID: 1970125590}
   - {fileID: 2127893368}
   - {fileID: 1418968175}
-  - {fileID: 813290240}
   - {fileID: 1041169052}
-  - {fileID: 1589033705}
   - {fileID: 1383517975}
   - {fileID: 583370634}
+  - {fileID: 813290240}
+  - {fileID: 1589033705}
   - {fileID: 1451982150}
   - {fileID: 713293640}
