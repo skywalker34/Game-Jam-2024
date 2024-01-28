@@ -36,7 +36,6 @@ public class PlayerControl : MonoBehaviour
         // Move the character
         if (canMove)
         {
-
             GetComponent<CharacterController>().Move(movement * speed * Time.deltaTime);
         }
         if (Input.GetMouseButtonDown(0))
@@ -45,7 +44,6 @@ public class PlayerControl : MonoBehaviour
             Invoke("SetCanMoveTrue", 1.0f); // After 3 seconds (duration of the animation) player can move again
 
         }
-
 
         //Face The Mouse
         Ray cameraRay = playerCamera.ScreenPointToRay(Input.mousePosition);
