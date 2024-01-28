@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public GameObject gameOverUI;
+    public Animator animator;
 
     private bool isDead = false;
     private float lastCollideTime;
@@ -26,8 +28,9 @@ public class Health : MonoBehaviour
                 hearts[i].sprite = emptyHeart;
             }
         }
-        if (health <= 0)
+        if (health == 0)
         {
+            animator.SetTrigger("dead");
             GameOver();
         }
     }
@@ -35,11 +38,12 @@ public class Health : MonoBehaviour
 
     void GameOver()
     {
-        //SceneManager.LoadScene("GameOver");
+        gameOverUI.SetActive(true);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (health == 0) return;
         if (collision.gameObject.tag.Equals("Enemy") && Time.time - lastCollideTime > 0.2f)
         {
             lastCollideTime = Time.time;
