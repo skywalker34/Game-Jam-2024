@@ -4,7 +4,8 @@ using UnityEngine.AI;
 public enum EnemyType
 {
     Goblin,
-    RedGuy
+    RedGuy,
+    Winnie
 }
 public class EnemyController : MonoBehaviour
 {
@@ -25,10 +26,15 @@ public class EnemyController : MonoBehaviour
         {
             navMeshAgent.speed = 3.5f;
         }
-        else
+        else if(enemyType == EnemyType.RedGuy)
         {
             navMeshAgent.speed = 14;
         }
+        else
+        {
+            navMeshAgent.speed = 20;
+        }
+
         target = GameObject.FindWithTag("Player").transform;
 
         if (target == null)
@@ -75,6 +81,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (enemyType == EnemyType.Winnie) return; 
         if (collision.gameObject.tag.Equals("banana peel"))
         {
             isBananaPeel = true;
