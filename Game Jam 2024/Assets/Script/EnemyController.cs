@@ -27,7 +27,6 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag.Equals("banana peel"))
         {
             GameObject banana = Instantiate(bananaPrefab, transform.position, transform.rotation);

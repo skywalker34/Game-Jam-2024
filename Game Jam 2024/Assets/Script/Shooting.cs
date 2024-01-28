@@ -9,7 +9,6 @@ public class Shooting : MonoBehaviour
     public Animator animator;
     public Transform playerTransform;
     public Transform shootingPoint;
-    public Transform meteorSpawn;
     public GameObject chickenPrefab;
     public GameObject bananaPeelPrefab;
     public GameObject firePrefab;
