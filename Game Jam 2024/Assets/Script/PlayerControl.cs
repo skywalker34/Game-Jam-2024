@@ -42,13 +42,13 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             SetCanMoveFalse(); // Stops player from moving during casting animation
-            Invoke("SetCanMoveTrue", 3.0f); // After 3 seconds (duration of the animation) player can move again
+            Invoke("SetCanMoveTrue", 1.0f); // After 3 seconds (duration of the animation) player can move again
 
         }
 
 
-            //Face The Mouse
-            Ray cameraRay = playerCamera.ScreenPointToRay(Input.mousePosition);
+        //Face The Mouse
+        Ray cameraRay = playerCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
         if (groundPlane.Raycast(cameraRay, out rayLength))
@@ -76,7 +76,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (canMove)
         {
-            canMove = false;
+            //canMove = false;
         }
     }
     public void SetCanMoveTrue() // Player can move again after animation is done

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tree
   - banana peel
+  - Enemy
   layers:
   - Default
   - TransparentFX
