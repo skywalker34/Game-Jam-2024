@@ -9,6 +9,9 @@ TagManager:
   - chicken
   - meteor
   - banana peel
+  - fireball
+  - EnemySpawner
+  - banana
   layers:
   - Default
   - TransparentFX
