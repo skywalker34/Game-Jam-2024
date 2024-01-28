@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    bool isDead = false;
+
     void Update()
     {
         for (int i = 0; i < hearts.Length; i++)
