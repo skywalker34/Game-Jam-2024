@@ -66,6 +66,10 @@ public class PlayerControl : MonoBehaviour
             //animator.SetBool("isDead", true);
             isDead = true;
         }
+        if (collision.gameObject.tag.Equals("Portal"))
+        {
+            Debug.Log("Portal");
+        }
     }
 
 

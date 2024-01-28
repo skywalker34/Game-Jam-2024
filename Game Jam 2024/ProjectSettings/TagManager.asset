@@ -12,6 +12,8 @@ TagManager:
   - fireball
   - EnemySpawner
   - banana
+  - Portal
+  - redguy
   layers:
   - Default
   - TransparentFX
