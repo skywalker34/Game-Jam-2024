@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
@@ -14,6 +15,10 @@ public class Health : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+             health -= 1;
+        }
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < health)
@@ -25,7 +30,18 @@ public class Health : MonoBehaviour
                 hearts[i].sprite = emptyHeart;
             }
         }
+        if (health <= 0)
+        {
+            GameOver();
+        }
     }
+
+
+    void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
 }
 
 
