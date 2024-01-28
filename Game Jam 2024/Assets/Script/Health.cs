@@ -14,6 +14,12 @@ public class Health : MonoBehaviour
 
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    health -= 1;
+        //}
+
+        
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < health)
