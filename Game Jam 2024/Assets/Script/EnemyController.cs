@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour
                 }
                 Destroy(gameObject);
             }
-            else if (stateInfo.IsName("Red Die") && stateInfo.normalizedTime >= 1.0f)
+            else if (stateInfo.IsName("Red die") && stateInfo.normalizedTime >= 1.0f)
             {
                 if (isBananaPeel)
                 {
