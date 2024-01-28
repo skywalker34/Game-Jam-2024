@@ -9,35 +9,30 @@ public class Shooting : MonoBehaviour
     public GameObject bananaPeelPrefab;
     public bool isBanana = false;
 
-    private float lastShotTime;
-
-    //[Header("Sounds")]
-    //public AudioSource shoot;
+    private bool canShoot = false;
 
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            int randomNumberInt = UnityEngine.Random.Range(0, 101);
-            isBanana = randomNumberInt > 30 ? true : false;
             animator.SetBool("isShooting", true);
-            lastShotTime = Time.time;
-            if (isBanana)
-            {
-                Shoot();
-            }
-            else
-            {
-                InvokeRepeating("Shoot", 0.2f, 0.2f);
-            }
+            Invoke("EnableShooting", 3f); // Enable shooting after 4 
         }
 
-        if (Time.time - lastShotTime >= 1.0f)
+        if (canShoot)
         {
+            int randomNumberInt = UnityEngine.Random.Range(0, 101);
+            isBanana = randomNumberInt > 30 ? true : false;
+            Shoot();
+            canShoot = false; // Reset the flag
             animator.SetBool("isShooting", false);
-            CancelInvoke("Shoot");
         }
+    }
+
+    void EnableShooting()
+    {
+        canShoot = true;
     }
 
     void Shoot()
@@ -45,6 +40,7 @@ public class Shooting : MonoBehaviour
         if (isBanana)
         {
             GameObject bananaPeel = Instantiate(bananaPeelPrefab, shootingPoint.position, transform.rotation);
+            Destroy(bananaPeel, 5.0f); // Destroys bananaPeel after 5 seconds
         }
         else
         {
@@ -52,6 +48,7 @@ public class Shooting : MonoBehaviour
             ChickenMovement chickenControl = chicken.GetComponent<ChickenMovement>();
             chickenControl.player = playerTransform.position;
             chickenControl.shootingPoint = shootingPoint.position;
+            Destroy(chicken, 5.0f); // Destroys chicken after 5 seconds
         }
     }
 }
