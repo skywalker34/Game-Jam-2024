@@ -13,6 +13,7 @@ TagManager:
   - EnemySpawner
   - banana
   - Portal
+  - redguy
   layers:
   - Default
   - TransparentFX

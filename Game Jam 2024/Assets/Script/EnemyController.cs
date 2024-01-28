@@ -62,6 +62,14 @@ public class EnemyController : MonoBehaviour
                 }
                 Destroy(gameObject);
             }
+            else if (stateInfo.IsName("Red Die") && stateInfo.normalizedTime >= 1.0f)
+            {
+                if (isBananaPeel)
+                {
+                    GameObject banana = Instantiate(bananaPrefab, transform.position, transform.rotation);
+                }
+                Destroy(gameObject);
+            }
         }
     }
 
