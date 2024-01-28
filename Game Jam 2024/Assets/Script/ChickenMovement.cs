@@ -6,7 +6,10 @@ public class ChickenMovement : MonoBehaviour
     public Vector3 enemy { get; set; }
     public Vector3 shootingPoint { get; set; }
     public Rigidbody chickenRigidbody;
+    public AudioSource chickenIdleSFX;
     private float speed = 10f;
+
+
 
     //void Start()
     //{
@@ -18,5 +21,9 @@ public class ChickenMovement : MonoBehaviour
     {
         Vector3 direction = (shootingPoint - player).normalized;
         chickenRigidbody.velocity = new Vector3(direction.x * speed, chickenRigidbody.velocity.y, direction.z * speed);
+
+
+
+        chickenIdleSFX.Play();
     }
 }
