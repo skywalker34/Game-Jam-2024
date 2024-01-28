@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0c6d6a755fb02f047a35c09b55f35dfa
+guid: cdfabe2f001329d469634fa6d7cfbb08
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -80,7 +80,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Standalone
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -92,7 +92,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -107,13 +107,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pixel_0
+      name: fireball_0
       rect:
         serializedVersion: 2
-        x: 156
-        y: 60
-        width: 699
-        height: 698
+        x: 244
+        y: 200
+        width: 465
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,8 +121,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d0be157d9f4e5b48be0ce31dbdb7f2d
-      internalID: 1676892261
+      spriteID: d9a46116018fd014e91fdcdf2045632d
+      internalID: -894471603
       vertices: []
       indices: 
       edges: []
@@ -130,7 +130,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8d8c24096f564c64c802349569b05b58
+    spriteID: d6290f653e3626842858c25fab7ea5a9
     internalID: 0
     vertices: []
     indices: 
@@ -138,7 +138,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pixel_0: 1676892261
+      fireball_0: -894471603
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

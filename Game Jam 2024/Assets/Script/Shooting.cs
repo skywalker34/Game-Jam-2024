@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    public GameObject bananaUI;
+    public GameObject chickenUI;
+    public GameObject fireballUI;
+    public GameObject defaultUI;
     public Animator animator;
     public Transform playerTransform;
     public Transform shootingPoint;
@@ -10,9 +14,15 @@ public class Shooting : MonoBehaviour
     public GameObject bananaPeelPrefab;
     public GameObject firePrefab;
     public bool isBanana = false;
+    private bool isChicken = false;
+    private bool isFire = false;
+    private bool isDefault = true;
+    private bool canShoot = true;
+    private bool canResetSpell = true;
     private float speed = 30f;
+    private float lastShotTime;
+    private float resetTime;
 
-    private bool canShoot = false;
 
     int randomNumberInt;
     public Vector3 player { get; set; }
@@ -23,25 +33,34 @@ public class Shooting : MonoBehaviour
     //public Camera playerCamera;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canShoot)
         {
             animator.SetBool("isShooting", true);
-            Invoke("EnableShooting", 1f); // Enable shooting after 4 
-        }
-
-        if (canShoot)
-        {
-            randomNumberInt = UnityEngine.Random.Range(0, 101);
-            isBanana = randomNumberInt > 60 ? true : false;
+            lastShotTime = Time.time;
+            if (canResetSpell)
+            {
+                resetTime = Time.time;
+                randomNumberInt = UnityEngine.Random.Range(0, 101);
+                isBanana = randomNumberInt > 60;
+                isFire = randomNumberInt <= 60 && randomNumberInt > 30;
+                isChicken = randomNumberInt <= 30 && randomNumberInt > 10;
+                isDefault = randomNumberInt <= 10;
+                canResetSpell = false;
+            }
             Shoot();
-            canShoot = false; // Reset the flag
-            animator.SetBool("isShooting", false);
+            canShoot = false;
         }
-    }
 
-    void EnableShooting()
-    {
-        canShoot = true;
+        if (Time.time - lastShotTime >= 1.0f)
+        {
+            animator.SetBool("isShooting", false);
+            canShoot = true;
+        }
+
+        if (Time.time - resetTime >= 5.0f)
+        {
+            canResetSpell = true;
+        }
     }
 
     void Shoot()
@@ -50,44 +69,49 @@ public class Shooting : MonoBehaviour
         {
             GameObject bananaPeel = Instantiate(bananaPeelPrefab, shootingPoint.position, transform.rotation);
             Destroy(bananaPeel, 5.0f); // Destroys bananaPeel after 5 seconds
+            bananaUI.SetActive(true);
+            chickenUI.SetActive(false);
+            fireballUI.SetActive(false);
+            defaultUI.SetActive(false);
         }
-        else if(randomNumberInt < 60 && randomNumberInt > 30)
+        else if (isFire)
         {
-            GameObject fireball = Instantiate(firePrefab, meteorSpawn.position, transform.rotation);
-
-            fireRigidbody = fireball.GetComponent<Rigidbody>();
-
-            //Destroy(fireball, 5.0f); // Destroys bananaPeel after 5 seconds
-
-            // Get the mouse position in screen coordinates
-            Vector2 mousePosition = Input.mousePosition;
-
-            // Create a ray from the camera to the mouse position
-            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-
-            // Declare a variable to store the hit information
-            RaycastHit hit;
+            Vector2 mousePosition = Input.mousePosition;    // Get the mouse position in screen coordinates
+            Ray ray = Camera.main.ScreenPointToRay(mousePosition);  // Create a ray from the camera to the mouse position
+            RaycastHit hit;   // Declare a variable to store the hit information
 
             // Check if the ray hits any object
             if (Physics.Raycast(ray, out hit))
             {
-                // Get the point where the hit occurred
                 Vector3 hitPoint = hit.point;
-
                 Vector3 direction = (hitPoint - shootingOrigin).normalized;
-                fireRigidbody.velocity = new Vector3(direction.x * speed, direction.y * speed, direction.z * speed);
-                // Print the hit point to the console
-                Debug.Log("You clicked at " + hitPoint);
+                GameObject fireball = Instantiate(firePrefab, new Vector3(hit.point.x, 30, hit.point.z), transform.rotation);
+                fireRigidbody = fireball.GetComponent<Rigidbody>();
+                Destroy(fireball, 5.0f);
             }
-
+            bananaUI.SetActive(false);
+            chickenUI.SetActive(false);
+            fireballUI.SetActive(true);
+            defaultUI.SetActive(false);
         }
-        else
+        else if (isChicken)
         {
             GameObject chicken = Instantiate(chickenPrefab, shootingPoint.position, transform.rotation);
             ChickenMovement chickenControl = chicken.GetComponent<ChickenMovement>();
             chickenControl.player = playerTransform.position;
             chickenControl.shootingPoint = shootingPoint.position;
             Destroy(chicken, 5.0f); // Destroys chicken after 5 seconds
+            bananaUI.SetActive(false);
+            chickenUI.SetActive(true);
+            fireballUI.SetActive(false);
+            defaultUI.SetActive(false);
+        }
+        else
+        {
+            bananaUI.SetActive(false);
+            chickenUI.SetActive(false);
+            fireballUI.SetActive(false);
+            defaultUI.SetActive(true);
         }
     }
 }

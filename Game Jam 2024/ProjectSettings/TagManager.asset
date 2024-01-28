@@ -5,8 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tree
-  - banana peel
   - Enemy
+  - chicken
+  - meteor
+  - banana peel
   layers:
   - Default
   - TransparentFX

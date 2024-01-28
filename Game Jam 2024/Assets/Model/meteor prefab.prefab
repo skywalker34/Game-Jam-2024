@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteor prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4d34a2aaf244b34d8f20a6e5157bce7, type: 3}
+      propertyPath: m_TagString
+      value: fireball
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -62,6 +66,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d4d34a2aaf244b34d8f20a6e5157bce7, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2100643622800034920}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d4d34a2aaf244b34d8f20a6e5157bce7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3912627871104575302}
   m_SourcePrefab: {fileID: 100100000, guid: d4d34a2aaf244b34d8f20a6e5157bce7, type: 3}
 --- !u!1 &1279673718569943057 stripped
 GameObject:
@@ -95,6 +102,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &-3912627871104575302
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279673718569943057}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.009999998
+  m_Height: 0.019999994
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1912201195241577131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d4d34a2aaf244b34d8f20a6e5157bce7, type: 3}
