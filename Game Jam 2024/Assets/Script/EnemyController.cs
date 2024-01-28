@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum EnemyType
+{
+    Goblin,
+    RedGuy
+}
 public class EnemyController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -8,12 +13,22 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public GameObject bananaPrefab;
     public Animator animator;
+    public EnemyType enemyType;
     private bool isDead;
+    private bool isBananaPeel = false;
 
     public EnemySpawner enemySpawner;
 
     void Start()
     {
+        if (enemyType == EnemyType.Goblin)
+        {
+            navMeshAgent.speed = 3.5f;
+        }
+        else
+        {
+            navMeshAgent.speed = 14;
+        }
         target = GameObject.FindWithTag("Player").transform;
 
         if (target == null)
@@ -41,6 +56,10 @@ public class EnemyController : MonoBehaviour
             AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
             if (stateInfo.IsName("Goblin die") && stateInfo.normalizedTime >= 1.0f)
             {
+                if (isBananaPeel)
+                {
+                    GameObject banana = Instantiate(bananaPrefab, transform.position, transform.rotation);
+                }
                 Destroy(gameObject);
             }
         }
@@ -50,7 +69,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("banana peel"))
         {
-            GameObject banana = Instantiate(bananaPrefab, transform.position, transform.rotation);
+            isBananaPeel = true;
             animator.SetBool("isDead", true);
             isDead = true;
             enemySpawner.enemyCount--;

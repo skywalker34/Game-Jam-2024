@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
@@ -36,12 +35,12 @@ public class Health : MonoBehaviour
 
     void GameOver()
     {
-        SceneManager.LoadScene("GameOver");
+        //SceneManager.LoadScene("GameOver");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Enemy") && Time.time - lastCollideTime > 1f)
+        if (collision.gameObject.tag.Equals("Enemy") && Time.time - lastCollideTime > 0.2f)
         {
             lastCollideTime = Time.time;
             health--;
