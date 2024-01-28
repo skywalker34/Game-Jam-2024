@@ -11,7 +11,8 @@ public class Health : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
-    bool isDead = false;
+    private bool isDead = false;
+    private float lastCollideTime;
 
     void Update()
     {
@@ -40,8 +41,9 @@ public class Health : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Enemy"))
+        if (collision.gameObject.tag.Equals("Enemy") && Time.time - lastCollideTime > 1f)
         {
+            lastCollideTime = Time.time;
             health--;
         }
     }

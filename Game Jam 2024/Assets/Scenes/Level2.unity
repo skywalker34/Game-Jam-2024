@@ -707,6 +707,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 15220831}
     - target: {fileID: 8470336944643895312, guid: 73f22e03d269a9245a63917b55f92c71, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1468859381}
+    - target: {fileID: 8470336944643895312, guid: 73f22e03d269a9245a63917b55f92c71, type: 3}
       propertyPath: bananaPrefab
       value: 
       objectReference: {fileID: 919132149155446097, guid: fd7fbebf94a1324419f518adab60d84f, type: 3}
@@ -2597,6 +2601,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1468859381 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 846912878723304255, guid: 73f22e03d269a9245a63917b55f92c71, type: 3}
+  m_PrefabInstance: {fileID: 307576555}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1493174964
 GameObject:
   m_ObjectHideFlags: 0
