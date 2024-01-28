@@ -163,6 +163,7 @@ MonoBehaviour:
   shootingControl: {fileID: 2038786989}
   speed: 10
   rotationSpeed: 5
+  canMove: 1
   playerCamera: {fileID: 963194227}
 --- !u!54 &15220828
 Rigidbody:
