@@ -12,6 +12,8 @@ public class Shooting : MonoBehaviour
     public GameObject chickenPrefab;
     public GameObject bananaPeelPrefab;
     public GameObject firePrefab;
+    public AudioSource audioSource;
+    public AudioClip clip;
     public bool isBanana = false;
     private bool isChicken = false;
     private bool isFire = false;
@@ -21,6 +23,7 @@ public class Shooting : MonoBehaviour
     private float speed = 30f;
     private float lastShotTime;
     private float resetTime;
+
 
 
     int randomNumberInt;
@@ -104,6 +107,10 @@ public class Shooting : MonoBehaviour
             chickenUI.SetActive(true);
             fireballUI.SetActive(false);
             defaultUI.SetActive(false);
+
+
+           // AudioClip chickenExplosion = chickenUI.GetComponent<AudioClip>();
+           // AudioSource.PlayClipAtPoint(chickenExplosion, playerTransform.position);
         }
         else
         {
