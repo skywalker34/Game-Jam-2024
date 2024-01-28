@@ -6,15 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelChange : MonoBehaviour
 {
-    public Animator animator;
-    public Transform playerTransform;
-    public Transform shootingPoint;
-    public GameObject chickenPrefab;
-
-    private float lastShotTime;
-
-    int x = SceneManager.GetActiveScene().buildIndex;
-
     // Start is called before the first frame update
     void Start()
     {
